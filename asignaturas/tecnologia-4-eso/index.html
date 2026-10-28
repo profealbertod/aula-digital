@@ -24,8 +24,8 @@
 <div class="material-grid unit-grid" id="unit-list" data-folder="apuntes"><p class="muted">Comprobando los apuntes disponibles…</p></div>
 <p class="empty-materials muted" id="unit-empty" hidden>Aún no hay apuntes publicados. Cuando se añadan archivos como <code>apuntes_1.pdf</code> a la carpeta <code>apuntes</code>, aparecerán aquí automáticamente.</p></section>
 <section class="resource-section" id="actividades"><div class="subject-section-heading"><div><p class="eyebrow">02 · PARA PRACTICAR</p><h2>Actividades</h2></div><p class="muted">Un PDF por unidad</p></div>
-<div class="material-grid unit-grid" id="activities-list" data-folder="actividades"><p class="muted">Comprobando las actividades disponibles…</p></div>
-<p class="empty-materials muted" id="activities-empty" hidden>Aún no hay actividades publicadas. Añade archivos como <code>actividades_1.pdf</code> a la carpeta <code>actividades</code> para que aparezcan aquí.</p></section>
+<div class="material-grid unit-grid" id="activities-list" data-folder="practicas"><p class="muted">Comprobando las actividades disponibles…</p></div>
+<p class="empty-materials muted" id="activities-empty" hidden>Aún no hay actividades publicadas. Añade archivos como <code>actividades_1.pdf</code> a la carpeta <code>practicas</code> para que aparezcan aquí.</p></section>
 <section class="resource-section" id="recursos"><div class="subject-section-heading"><div><p class="eyebrow">03 · PRESENTACIONES</p><h2>Presentaciones</h2></div><p class="muted">Un PDF por unidad</p></div>
 <div class="material-grid unit-grid" id="presentations-list" data-folder="recursos"><p class="muted">Comprobando las presentaciones disponibles…</p></div>
 <p class="empty-materials muted" id="presentations-empty" hidden>Aún no hay presentaciones publicadas. Añade archivos como <code>presentacion_1.pdf</code> a la carpeta <code>recursos</code> para que aparezcan aquí.</p></section>
@@ -37,7 +37,7 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 (async function(){
  const configs=[
   {list:"#unit-list",empty:"#unit-empty",folder:"apuntes",prefix:"apuntes_",label:"Unidad"},
-  {list:"#activities-list",empty:"#activities-empty",folder:"actividades",prefix:"actividades_",label:"Actividad"},
+  {list:"#activities-list",empty:"#activities-empty",folder:"practicas",prefix:"actividades_",label:"Actividad"},
   {list:"#presentations-list",empty:"#presentations-empty",folder:"recursos",prefix:"presentacion_",label:"Presentación"}
  ];
  let titles={};
