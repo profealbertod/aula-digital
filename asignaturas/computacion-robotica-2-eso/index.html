@@ -34,10 +34,12 @@
 document.querySelector("#year").textContent = new Date().getFullYear();
 (async function(){
  const list=document.querySelector("#unit-list"), empty=document.querySelector("#unit-empty");
+ let titles={};
+ try { const response=await fetch("unidades.json"); if(response.ok) titles=await response.json(); } catch(e) {}
  const files=Array.from({length:20},(_,i)=>i+1);
  const found=await Promise.all(files.map(async n=>{const name="apuntes_"+n+".pdf";try{const r=await fetch("apuntes/"+name,{method:"HEAD"});return r.ok?{n,name}:null}catch(e){return null}}));
  const available=found.filter(Boolean);list.replaceChildren();
- available.forEach(({n,name})=>{const card=document.createElement("article");card.className="material-card";const num=document.createElement("span");num.className="material-number";num.textContent=String(n).padStart(2,"0");const body=document.createElement("div");const title=document.createElement("h3");title.textContent="Unidad "+n;const desc=document.createElement("p");desc.textContent="Apuntes de la unidad "+n+" en PDF.";body.append(title,desc);const link=document.createElement("a");link.className="material-status";link.href="apuntes/"+name;link.target="_blank";link.rel="noopener";link.textContent="Abrir PDF ↗";card.append(num,body,link);list.append(card)});
+ available.forEach(({n,name})=>{const card=document.createElement("article");card.className="material-card";const num=document.createElement("span");num.className="material-number";num.textContent=String(n).padStart(2,"0");const body=document.createElement("div");const title=document.createElement("h3");title.textContent="Unidad "+n+(titles[String(n)]?" : "+titles[String(n)]:"");const desc=document.createElement("p");desc.textContent="Apuntes de la unidad "+n+" en PDF.";body.append(title,desc);const link=document.createElement("a");link.className="material-status";link.href="apuntes/"+name;link.target="_blank";link.rel="noopener";link.textContent="Abrir PDF ↗";card.append(num,body,link);list.append(card)});
  empty.hidden=available.length>0; if(!available.length) list.hidden=true;
 })();
 </script>
